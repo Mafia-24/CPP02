@@ -24,13 +24,13 @@ Fixed::Fixed()
 Fixed::Fixed( const int value )
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->value = value << Fixed::f_bits_number;
+	this->value = value * (1 << Fixed::f_bits_number); // shifting the int value will place 0's at the right most f_bits_number bits. 
 }
 
 Fixed::Fixed( const float value )
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->value = value * (1 << Fixed::f_bits_number);
+	this->value = value * (1 << Fixed::f_bits_number); // this is equivalent to moving f_bits_number of bits that are in the right of the fixed point to left side.
 }
 
 Fixed::Fixed(const Fixed &ref)
@@ -51,12 +51,19 @@ int	Fixed::getRawBits( void ) const
 	return (this->value);
 }
 
-Fixed Fixed::operator=(Fixed const added)
+Fixed& Fixed::operator=(const Fixed& added)
 {
-	Fixed temp;
 
-	temp = added;
-	return (temp);
+	std::cout << "Copy assignment operator called" << std::endl;
+
+	if (this == &added)
+	{
+		return (*this);
+	}
+
+	this->value = added.value;
+	
+	return (*this);
 }
 
 int Fixed::toInt( void ) const

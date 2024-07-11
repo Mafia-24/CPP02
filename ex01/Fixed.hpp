@@ -38,7 +38,7 @@ public :
 
 	int toInt( void ) const;
 	
-	Fixed operator=( Fixed const added );
+	Fixed& operator=( const Fixed&  added );
 	
 
 };
