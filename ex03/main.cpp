@@ -6,31 +6,23 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 06:08:28 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/07/12 21:57:12 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/07/14 03:31:28 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include "Point.hpp"
+#include "bsp.hpp"
 #include <iostream>
 
 int main( void ) {
-
-	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.55f );
-	Fixed const d( b );
-
-	a = Fixed( 1234.4321f );
-
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 	
+	Point a(1.0f, 2.0f);
+	Point b(3.0f, 3.0f);
+	Point c(3.0f, -1.0f);
+	Point p(2.5f, 2.0f);
+
+	std::cout << bsp(a, b, c, p) << std::endl;
+
 	return 0;
 }
