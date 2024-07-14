@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 01:45:34 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/07/14 03:41:09 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/07/14 03:42:49 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	calc_area (b, c, point, area3);
 	calc_area (a, b, c, glob_area);
 
-	std::cout << glob_area << " " << area1<< " " << area2 << " " << area3 << "\n";
 	if (area1 == Fixed(0) || area2 == Fixed(0) || area3 == Fixed(0))
 		return (false);
 	return (glob_area == area1 + area2 + area3);
