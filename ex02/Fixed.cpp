@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 23:26:40 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/07/15 06:14:44 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/07/15 06:37:12 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ Fixed::~Fixed()
 	// std::cout << "Destructor called" << std::endl;
 }
 
-///////////////////////
+// ostream operator << overload
 
 std::ostream &operator<<(std::ostream& out, Fixed const& to_print )
 {

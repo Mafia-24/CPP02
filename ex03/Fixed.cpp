@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 23:26:40 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/07/15 06:15:22 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/07/15 06:37:23 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Fixed::Fixed()
 Fixed::Fixed( const int value )
 {
 	// std::cout << "Int constructor called" << std::endl;
-	this->value = value * (1 << Fixed::f_bits_number); // shifting the int value will place 0's at the right most f_bits_number bits. 
+	this->value = value * (1 << Fixed::f_bits_number); 
 }
 
 Fixed::Fixed( const float value )
@@ -200,7 +200,7 @@ Fixed::~Fixed()
 	// std::cout << "Destructor called" << std::endl;
 }
 
-///////////////////////
+// ostream operator << overload
 
 std::ostream &operator<<(std::ostream& out, Fixed const& to_print )
 {
