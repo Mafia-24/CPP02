@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 01:45:34 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/07/14 03:42:49 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/07/15 00:05:58 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void calc_area( Point const a, Point const b, Point const c, Fixed& area 
 	Fixed half(0.5f);
 	Fixed zero(0.0f);
 	Fixed negativeOne(-1.0f);
-	
+
 	area = half * (a.get_x() * (b.get_y() - c.get_y()) + b.get_x() * (c.get_y() - a.get_y()) + c.get_x() * (a.get_y() - b.get_y()));
 
 	if (area < zero)
@@ -46,7 +46,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	calc_area (b, c, point, area3);
 	calc_area (a, b, c, glob_area);
 
-	if (area1 == Fixed(0) || area2 == Fixed(0) || area3 == Fixed(0))
+	if (area1 == Fixed(0.0f) || area2 == Fixed(0.0f) || area3 == Fixed(0.0f))
 		return (false);
 	return (glob_area == area1 + area2 + area3);
 }

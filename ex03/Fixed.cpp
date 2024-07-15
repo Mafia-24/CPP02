@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 23:26:40 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/07/14 03:38:13 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/07/15 06:15:22 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Fixed::Fixed(const Fixed &ref)
 {
 	// std::cout << "Copy constructor called" << std::endl;
 	*this = ref;
-}
+} 	
 
 void	Fixed::setRawBits( int const raw )
 {
@@ -61,25 +61,24 @@ Fixed& Fixed::operator=(const Fixed& added) // why this name
 		return (*this);
 	}
 
-	this->value = added.value;
+	this->value = added.getRawBits();
 	
 	return (*this);
 }
 
 int Fixed::toInt( void ) const
 {
-	return (this->value >> Fixed::f_bits_number);
+	return (this->value / (1 << Fixed::f_bits_number));
 }
 
 float Fixed::toFloat( void ) const
 {
-	return ( (float) this->value / (1 << Fixed::f_bits_number)); // here the cast must happen first so that when deviding the exponent only will have changed
+	return ( (float) this->value / (1 << Fixed::f_bits_number));
 }
-
 
 bool Fixed::operator<(const Fixed& rhs) const
 {
-	return (this->value < rhs.value); // why comparing the values and not the casted float number is that casting to float might result in losing precesion // explain this
+	return (this->value < rhs.value);
 }
 
 bool Fixed::operator>(const Fixed& rhs) const
@@ -129,7 +128,7 @@ Fixed Fixed::operator*( const Fixed& rhs ) const
 {
 	Fixed newFixed;
 
-	newFixed.setRawBits ((this->getRawBits () * rhs.getRawBits ()) / (1 << Fixed::f_bits_number)); // we have to shift because the number of fractional bits get s doubled in case of multiplication.
+	newFixed.setRawBits (((uint64_t) this->getRawBits () * rhs.getRawBits ()) / (1 << Fixed::f_bits_number));
 
 	return (newFixed);
 }
@@ -138,7 +137,7 @@ Fixed Fixed::operator/( const Fixed& rhs ) const
 {
 	Fixed newFixed;
 
-	newFixed.setRawBits (this->getRawBits () / rhs.getRawBits ());
+	newFixed.setRawBits ((this->getRawBits () / rhs.getRawBits ()) * (1 << Fixed::f_bits_number));
 
 	return (newFixed);
 }
@@ -188,20 +187,18 @@ const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
 
 Fixed& Fixed::max(Fixed& a, Fixed& b)
 {
-	return (a <= b ? a : b);
+	return (a >= b ? a : b);
 }
 
 const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
 {
-	return (a <= b ? a : b);
+	return (a >= b ? a : b);
 }
 
 Fixed::~Fixed()
 {
 	// std::cout << "Destructor called" << std::endl;
 }
-
-
 
 ///////////////////////
 
