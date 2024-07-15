@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 23:26:44 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/07/15 06:02:38 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/07/15 06:24:25 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 #include <cmath>
 
 class Fixed{
-
-	int					value;
-	static const int	f_bits_number;
 
 public :
 
@@ -58,13 +55,13 @@ public :
 	
 	Fixed operator/ ( const Fixed& rhs ) const;
 
-	Fixed operator++ ( void ); // prefix
+	Fixed operator++ ( void );
 
-	Fixed operator++ ( int ); //postfix it has a dummy parameter it must be an int
+	Fixed operator++ ( int );
 
-	Fixed operator-- ( void ); // prefix
+	Fixed operator-- ( void );
 
-	Fixed operator-- ( int ); //postfix it has a dummy parameter
+	Fixed operator-- ( int );
 
 	static Fixed& min(Fixed& a, Fixed& b);
 
@@ -75,6 +72,11 @@ public :
 	const static Fixed& max(const Fixed& a, const Fixed& b);
 
 	~Fixed();
+
+private :
+
+	int					value;
+	static const int	f_bits_number;
 
 };
 

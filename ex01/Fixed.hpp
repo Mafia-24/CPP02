@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 23:26:44 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/06/02 01:57:38 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/07/15 06:22:16 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 #include <cmath>
 
 class Fixed{
-
-	int					value;
-	static const int	f_bits_number;
 
 public :
 
@@ -40,6 +37,10 @@ public :
 	
 	Fixed& operator=( const Fixed&  added );
 	
+private :
+
+	int					value;
+	static const int	f_bits_number;
 
 };
 
